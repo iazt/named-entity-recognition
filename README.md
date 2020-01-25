@@ -23,7 +23,7 @@ This is a task for the NLP course, CC6205 of the University of Chile. [Here](htt
 
 </center>
 
-<table style= "float: center">
+<table style= "margin: auto">
   <tr>
     <td> Model / Metric </td>
     <td> F1</td>
