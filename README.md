@@ -13,10 +13,12 @@ This is a task for the NLP course, CC6205 of the University of Chile. [Here](htt
 
 ## Results in Test set
 <center>
+  
 | Model / Metric | F1        | Precision | Recall   |
 |----------------|-----------|-----------|----------|
 |   Baseline     |   0.564   |   0.654   |  0.538   |
 |                |           |           |          |
 |                |           |           |          |
 |                |           |           |          |
+
 </center>
