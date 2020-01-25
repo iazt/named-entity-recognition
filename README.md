@@ -22,13 +22,3 @@ This is a task for the NLP course, CC6205 of the University of Chile. [Here](htt
 |                |           |           |          |
 
 </center>
-
-<table style= "margin: auto">
-  <tr>
-    <td> Model / Metric </td>
-    <td> F1</td>
-    <td> Precision </td>
-    <td> Recall </td>
-  </tr>
-    
-</table>
