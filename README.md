@@ -19,4 +19,4 @@ This is a task for the NLP course, CC6205 of the University of Chile. [Here](htt
 |                |           |           |          |
 |                |           |           |          |
 |                |           |           |          |
-<center>
+</center>
