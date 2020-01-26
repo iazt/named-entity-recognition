@@ -7,7 +7,9 @@ On the other hand, Named Entity Recognition (NER) is a subtask of Sequence Label
 
 In this repository, different solutions are compared to solve a NER problem using a spanish database.
 
-This is a task for the NLP course, CC6205 of the University of Chile. [Here](https://github.com/iazt/named-entity-recognition/blob/master/baseline.ipynb), you can find a baseline for the task, which is a basic solution created by the assistant professor Pablo Badilla. The models shown in this repository were tested in a [codalab competition](https://competitions.codalab.org/competitions/21613) so the test labels are hidden.
+This is a task for the NLP course, CC6205 of the University of Chile. [Here](https://github.com/iazt/named-entity-recognition/blob/master/baseline.ipynb), you can find a baseline for the task, which is a basic solution created by the assistant professor Pablo Badilla. 
+
+Data: [CoNLL 2002 Spanish](https://www.clips.uantwerpen.be/conll2002/ner/).
 
 
 
