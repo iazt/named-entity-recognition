@@ -14,13 +14,39 @@ Data: [CoNLL 2002 Spanish](https://www.clips.uantwerpen.be/conll2002/ner/).
 
 
 ## Results in Test set
-<center>
 
-| Model / Metric | F1        | Precision | Recall   |
-|----------------|-----------|-----------|----------|
-|   BILMST (hidden dim = 512, layers = 3, dropout = 0.2)     |   0.601   |   0.678  |  0.557   |
-|                |           |           |          |
-|                |           |           |          |
-|                |           |           |          |
-
-</center>
+<table class="tg">
+  <tr>
+    <th class="tg-baqh" rowspan="2"><br>Model / Metric</th>
+    <th class="tg-baqh" colspan="3">Macro AVG</th>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">F1 </td>
+    <td class="tg-c3ow">Precision</td>
+    <td class="tg-c3ow">Recall</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">BILMST (hidden dim = 512, layers = 3, dropout = 0.2)</td>
+    <td class="tg-c3ow">0.601</td>
+    <td class="tg-c3ow">0.678</td>
+    <td class="tg-c3ow">0.557</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+  </tr>
+</table>
