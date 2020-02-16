@@ -30,7 +30,6 @@ class RNNNer(nn.Module):
         # Dropout
         self.dropout = nn.Dropout(dropout)
 
-        self.softmax = nn.Softmax(dim=2)
 
     def forward(self, text):
         # text = [sent len, batch size]
@@ -51,4 +50,4 @@ class RNNNer(nn.Module):
 
         # predictions = [sent len, batch size, output dim]
 
-        return self.softmax(predictions)
+        return predictions
