@@ -1,6 +1,6 @@
 # Definimos las métricas
 import torch
-from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
+from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score, classification_report
 import warnings
 import sklearn.exceptions
 warnings.filterwarnings("ignore", category=sklearn.exceptions.UndefinedMetricWarning)
@@ -160,3 +160,79 @@ def train_loop(n_epochs, model, train_iterator, valid_iterator, optimizer, crite
             f'\tTrain Loss: {train_loss:.3f} | Train f1: {train_f1:.2f} | Train precision: {train_precision:.2f} | Train recall: {train_recall:.2f} | Train_accuracy: {train_acc:.2f}')
         print(
             f'\t Val. Loss: {valid_loss:.3f} |  Val. f1: {valid_f1:.2f} | Val. precision: {valid_precision:.2f} | Val. recall: {valid_recall:.2f} | Val. accuracy: {val_acc:.2f}')
+
+
+def predict_labels(model, iterator):
+
+    model.eval()
+    list_predictions_batch = []
+    texts = []
+
+    with torch.no_grad():
+
+        for batch in iterator:
+            text = batch.text
+            texts.append(torch.transpose(text, 0, 1).tolist())
+
+            # Predecir los tags del batch
+            predictions_batch = model(text)
+
+            # Hacer las oraciones y no las palabras el primer indice
+            predictions_batch = torch.transpose(predictions_batch, 0, 1)
+
+            predicted_tags_batch = []
+            for predictions_sent in predictions_batch:
+                sent_tags = []
+                # extraer la clase (el indice de la probabilidad predicha mas alta)
+                for prediction_tag in predictions_sent:
+                    argmax_index = prediction_tag.topk(1)[1]
+                    sent_tags.append(argmax_index)
+
+                predicted_tags_batch.append(sent_tags)
+
+            list_predictions_batch.append(predicted_tags_batch)
+
+    return texts, list_predictions_batch
+
+
+
+def get_tokens_from_vocab(test_texts, field):
+  tokens = []
+  for batch in test_texts:
+      for sent in batch:
+          token_batch = []
+          for token in sent:
+              token_batch.append(field.vocab.itos[token])
+          tokens.append(token_batch)
+  return tokens
+
+
+def filter_pads(sentences, tags):
+    filter_sentences = []
+    filter_labels = []
+    for sent, labels in zip(sentences, tags):
+        filter_sentence = []
+        filter_label = []
+
+        for word, label in zip(sent, labels):
+            if word != '<pad>':
+                filter_sentence.append(word)
+                filter_label.append(label)
+
+        filter_sentences.append(filter_sentence)
+        filter_labels.append(filter_label)
+
+    return filter_sentences, filter_labels
+
+
+def test_evaluation(data_path, pred_labels):
+    f = open(data_path, encoding='iso-8859-1')
+    true_labels = []
+    for line in f.readlines():
+        try:
+            true_labels.append(line.split()[1])
+        except:
+            pass
+    f.close()
+
+    print(classification_report(true_labels, pred_labels, digits=3))

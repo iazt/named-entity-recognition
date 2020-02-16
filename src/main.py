@@ -2,7 +2,7 @@ from torchtext import data, datasets
 import torch
 from torch import nn
 from src.rnn import RNNNer
-from src.utils import train_loop
+from src.utils import train_loop, predict_labels, get_tokens_from_vocab, filter_pads, test_evaluation
 import torch.optim as optim
 
 directory = '/home/ignacio/'
@@ -19,6 +19,7 @@ fields = (("text", TEXT), ("nertags", NER_TAGS))
 train_data = datasets.SequenceTaggingDataset(directory + 'train_NER_esp.txt', fields, encoding="iso-8859-1", separator=" ")
 valid_data = datasets.SequenceTaggingDataset(directory + 'val_NER_esp.txt', fields, encoding="iso-8859-1", separator=" ")
 test_data = datasets.SequenceTaggingDataset(directory + 'test_NER_esp.txt', fields, encoding="iso-8859-1", separator=" ")
+
 
 TEXT.build_vocab(train_data)
 NER_TAGS.build_vocab(train_data)
@@ -84,3 +85,11 @@ criterion = criterion.to(device)
 N_EPOCHS = 1
 train_loop(N_EPOCHS, model, train_iterator, valid_iterator, optimizer, criterion)
 
+test_texts, test_predictions = predict_labels(model, test_iterator , criterion)
+
+predictions_test_tags = get_tokens_from_vocab(test_predictions, NER_TAGS)
+sentences = get_tokens_from_vocab(test_texts, TEXT)
+
+filter_sentences, filter_labels = filter_pads(sentences,predictions_test_tags)
+
+test_evaluation(directory + 'test_NER_esp.txt', filter_labels)
