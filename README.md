@@ -15,10 +15,10 @@ Data: [CoNLL 2002 Spanish](https://www.clips.uantwerpen.be/conll2002/ner/).
 
 ## Results in Test set
 <center>
-  
+
 | Model / Metric | F1        | Precision | Recall   |
 |----------------|-----------|-----------|----------|
-|   Baseline     |   0.564   |   0.654   |  0.538   |
+|   BILMST (hidden dim = 512, layers = 3, dropout = 0.2)     |   0.601   |   0.678  |  0.557   |
 |                |           |           |          |
 |                |           |           |          |
 |                |           |           |          |
