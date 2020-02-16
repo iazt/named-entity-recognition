@@ -27,9 +27,9 @@ Data: [CoNLL 2002 Spanish](https://www.clips.uantwerpen.be/conll2002/ner/).
   </tr>
   <tr>
     <td class="tg-c3ow">BILMST (hidden dim = 512, layers = 3, dropout = 0.2)</td>
-    <td class="tg-c3ow">0.601</td>
-    <td class="tg-c3ow">0.678</td>
-    <td class="tg-c3ow">0.557</td>
+    <td class="tg-c3ow">0.6664 +- 0.026</td>
+    <td class="tg-c3ow">0.745 +-  0.0115</td>
+    <td class="tg-c3ow">0.615 +- 0.035</td>
   </tr>
   <tr>
     <td class="tg-c3ow"></td>
